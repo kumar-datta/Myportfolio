@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kumar Datta Goud | Software Developer & Systems Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-pale: #F7F0E0;
+  --gold-dim: rgba(201,168,76,0.18);
+  --navy: #0A1628;
+  --navy-mid: #142035;
+  --navy-light: #1C2F4A;
+  --navy-accent: #243856;
+  --cream: #FAF8F3;
+  --cream-dark: #F0EAE0;
+  --cream-mid: #EDE5D8;
+  --white: #FFFFFF;
+  --text-dark: #0A1628;
+  --text-mid: #4A5568;
+  --text-soft: #6B7A8D;
+  --text-light: #96A4B4;
+  --border-gold: rgba(201,168,76,0.22);
+  --border-dark: rgba(10,22,40,0.1);
+  --hld-accent: #B8860B;
+  --hld-bg: #FDF6E3;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;line-height:1.6;}
+
+/* ── CURSOR ── */
+*{cursor:default;}
+a,button{cursor:pointer;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 5%;
+  background:rgba(250,248,243,0.93);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border-gold);
+  transition:box-shadow 0.3s;
+}
+.nav-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:600;letter-spacing:0.03em;
+  color:var(--navy);text-decoration:none;
+}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:2.2rem;list-style:none;}
+.nav-links a{
+  font-size:0.78rem;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;
+  color:var(--text-soft);text-decoration:none;transition:color 0.25s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;right:0;height:1px;
+  background:var(--gold);transform:scaleX(0);transition:transform 0.3s;transform-origin:left;
+}
+.nav-links a:hover{color:var(--navy);}
+.nav-links a:hover::after{transform:scaleX(1);}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;background:var(--navy);
+  display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;
+  padding:9rem 5% 5rem;position:relative;overflow:hidden;gap:4rem;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,0.06) 1px,transparent 1px);
+  background-size:70px 70px;
+}
+.hero-glow{
+  position:absolute;top:-10%;right:5%;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,0.08) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-left{position:relative;z-index:2;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:400;margin-bottom:2rem;
+  border:1px solid rgba(201,168,76,0.35);padding:0.5rem 1rem;
+}
+.hero-tag::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
+.hero-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(3.2rem,5.5vw,6rem);font-weight:300;line-height:1.0;
+  color:var(--cream);letter-spacing:-0.015em;margin-bottom:1.2rem;
+}
+.hero-name .line2{display:block;font-style:italic;color:var(--gold);font-weight:400;}
+.hero-name .line3{display:block;font-size:0.55em;font-style:normal;font-weight:300;color:rgba(250,248,243,0.45);letter-spacing:0.1em;margin-top:0.4rem;text-transform:uppercase;font-family:'DM Sans',sans-serif;}
+.hero-roles{
+  display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;
+}
+.role-chip{
+  font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;
+  padding:0.4rem 0.9rem;border:1px solid rgba(250,248,243,0.15);color:rgba(250,248,243,0.55);
+}
+.role-chip.hld{
+  border-color:var(--gold);color:var(--gold);
+  background:rgba(201,168,76,0.08);
+}
+.hero-desc{
+  font-size:0.95rem;line-height:1.85;color:rgba(250,248,243,0.6);
+  max-width:460px;margin-bottom:3rem;font-weight:300;
+}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-gold{
+  padding:0.9rem 2.4rem;background:var(--gold);color:var(--navy);
+  font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;
+  border:none;text-decoration:none;display:inline-block;
+  transition:all 0.3s;
+}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);}
+.btn-ghost{
+  padding:0.9rem 2.4rem;background:transparent;color:rgba(250,248,243,0.75);
+  font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:300;
+  border:1px solid rgba(250,248,243,0.2);text-decoration:none;display:inline-block;
+  transition:all 0.3s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+/* hero right — stat cards */
+.hero-right{position:relative;z-index:2;}
+.stats-frame{
+  border:1px solid rgba(201,168,76,0.2);
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:rgba(201,168,76,0.15);
+}
+.stat-box{
+  background:rgba(20,32,53,0.95);padding:2.2rem 1.8rem;
+  text-align:center;position:relative;overflow:hidden;
+  transition:background 0.3s;
+}
+.stat-box::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:var(--gold);transform:scaleX(0);transition:transform 0.4s;transform-origin:left;
+}
+.stat-box:hover{background:rgba(28,47,74,0.98);}
+.stat-box:hover::after{transform:scaleX(1);}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:2.8rem;font-weight:300;color:var(--gold);line-height:1;margin-bottom:0.5rem;
+}
+.stat-lbl{font-size:0.67rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,248,243,0.4);font-weight:300;}
+.hero-scroll{
+  position:absolute;bottom:3rem;left:5%;
+  display:flex;align-items:center;gap:0.75rem;z-index:2;
+  font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(250,248,243,0.3);
+}
+.scroll-line{width:40px;height:1px;background:rgba(250,248,243,0.2);}
+
+/* ── SECTIONS ── */
+section{padding:7rem 5%;}
+.sec-hd{margin-bottom:4.5rem;}
+.sec-tag{
+  display:flex;align-items:center;gap:0.8rem;
+  font-size:0.7rem;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--gold);font-weight:400;margin-bottom:1rem;
+}
+.sec-tag::before{content:'';display:block;width:36px;height:1px;background:var(--gold);}
+.sec-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,3.8vw,3.8rem);font-weight:300;line-height:1.08;
+  color:var(--navy);letter-spacing:-0.01em;
+}
+.sec-title em{font-style:italic;color:var(--gold);}
+.sec-title-light{color:var(--cream);}
+
+/* ── ABOUT ── */
+#about{background:var(--white);}
+.about-wrap{display:grid;grid-template-columns:280px 1fr;gap:6rem;align-items:start;}
+.about-card{
+  background:var(--navy);padding:0;
+  position:relative;
+}
+.about-card::after{
+  content:'';position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;
+  border:1px solid var(--border-gold);z-index:-1;
+}
+.monogram-block{
+  background:var(--navy);height:200px;
+  display:flex;align-items:center;justify-content:center;
+  border-bottom:1px solid rgba(201,168,76,0.15);
+}
+.monogram{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5.5rem;font-weight:300;color:var(--gold);letter-spacing:-0.06em;line-height:1;
+}
+.about-meta-list{padding:1.5rem;}
+.meta-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:0.6rem 0;border-bottom:1px solid rgba(201,168,76,0.12);gap:1rem;
+}
+.meta-row:last-child{border-bottom:none;}
+.mk{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(250,248,243,0.35);font-weight:300;white-space:nowrap;}
+.mv{font-size:0.8rem;color:rgba(250,248,243,0.8);font-weight:300;text-align:right;}
+.mv a{color:var(--gold);text-decoration:none;}
+.mv a:hover{text-decoration:underline;}
+
+.about-text{}
+.about-quote{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.55rem;font-weight:300;line-height:1.65;
+  color:var(--navy);font-style:italic;
+  border-left:3px solid var(--gold);padding-left:1.5rem;
+  margin-bottom:2rem;
+}
+.about-p{font-size:0.93rem;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.2rem;}
+
+/* HLD HIGHLIGHT BLOCK */
+.hld-block{
+  background:var(--hld-bg);border:1px solid rgba(184,134,11,0.3);
+  border-left:4px solid var(--gold);
+  padding:1.8rem 2rem;margin:2rem 0;
+  position:relative;overflow:hidden;
+}
+.hld-block::before{
+  content:'SYSTEM DESIGN';
+  position:absolute;top:0.75rem;right:1rem;
+  font-size:0.6rem;letter-spacing:0.25em;color:rgba(184,134,11,0.4);font-weight:400;
+}
+.hld-title{
+  font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--hld-accent);font-weight:500;margin-bottom:0.75rem;
+}
+.hld-items{display:flex;flex-wrap:wrap;gap:0.6rem;}
+.hld-item{
+  font-size:0.8rem;color:var(--text-dark);font-weight:400;
+  display:flex;align-items:center;gap:0.4rem;
+}
+.hld-item::before{content:'◆';font-size:0.45rem;color:var(--gold);}
+
+.achv-strip{display:flex;gap:1px;background:var(--cream-mid);margin:2rem 0;}
+.achv-cell{flex:1;background:var(--cream);padding:1.4rem 1.2rem;border-left:3px solid var(--gold);}
+.achv-cell h4{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;font-weight:400;}
+.achv-cell p{font-size:0.82rem;color:var(--text-mid);line-height:1.55;}
+
+/* ── SKILLS ── */
+#skills{background:var(--cream);}
+.skills-master{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border-gold);}
+.sk-group{background:var(--cream);padding:2.2rem;}
+.sk-title{
+  font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--gold);font-weight:400;margin-bottom:1.4rem;
+  display:flex;align-items:center;gap:0.75rem;
+}
+.sk-title::after{content:'';flex:1;height:1px;background:var(--border-gold);}
+.tags{display:flex;flex-wrap:wrap;gap:0.55rem;}
+.tag{
+  font-family:'DM Mono',monospace;
+  padding:0.42rem 0.85rem;font-size:0.75rem;
+  background:var(--white);border:1px solid var(--border-dark);
+  color:var(--text-dark);font-weight:300;letter-spacing:0.03em;
+  transition:all 0.25s;text-decoration:none;display:inline-block;
+}
+.tag:hover{background:var(--navy);color:var(--gold-light);border-color:var(--navy);}
+.tag.star{background:var(--navy);color:var(--gold-light);border-color:var(--navy);}
+
+/* HLD SPECIAL SKILL GROUP */
+.sk-group.hld-group{
+  background:var(--navy);
+  grid-column:1 / -1;
+}
+.sk-group.hld-group .sk-title{color:var(--gold);}
+.sk-group.hld-group .sk-title::after{background:rgba(201,168,76,0.2);}
+.hld-skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;}
+.hld-skill-card{
+  background:rgba(201,168,76,0.06);
+  border:1px solid rgba(201,168,76,0.2);
+  padding:1.2rem;text-align:center;
+  transition:all 0.3s;
+}
+.hld-skill-card:hover{background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.45);}
+.hld-sk-icon{font-size:1.5rem;margin-bottom:0.5rem;color:var(--gold);font-family:'Cormorant Garamond',serif;font-weight:300;}
+.hld-sk-name{font-size:0.75rem;color:rgba(250,248,243,0.85);font-weight:300;letter-spacing:0.05em;}
+.hld-sk-sub{font-size:0.65rem;color:rgba(250,248,243,0.35);margin-top:0.2rem;font-family:'DM Mono',monospace;}
+
+.lc-card{
+  margin-top:2px;background:var(--navy);padding:2.5rem;
+  display:flex;align-items:center;gap:3rem;
+}
+.lc-big{
+  font-family:'Cormorant Garamond',serif;
+  font-size:4rem;font-weight:300;color:var(--gold);line-height:1;
+}
+.lc-sep{width:1px;height:60px;background:rgba(201,168,76,0.3);}
+.lc-info{}
+.lc-info h3{font-size:1rem;color:var(--cream);font-weight:400;margin-bottom:0.3rem;}
+.lc-info p{font-size:0.82rem;color:rgba(250,248,243,0.45);font-weight:300;line-height:1.6;}
+.lc-info a{color:var(--gold);text-decoration:none;font-size:0.75rem;letter-spacing:0.1em;}
+.lc-info a:hover{text-decoration:underline;}
+
+/* ── PROJECTS ── */
+#projects{background:var(--white);}
+.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--cream-dark);}
+.proj-card{
+  background:var(--white);padding:3rem 2.8rem;
+  position:relative;overflow:hidden;transition:background 0.3s;
+}
+.proj-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--gold);transform:scaleX(0);transition:transform 0.4s;transform-origin:left;
+}
+.proj-card:hover{background:var(--cream);}
+.proj-card:hover::before{transform:scaleX(1);}
+.proj-no{
+  font-family:'Cormorant Garamond',serif;
+  font-size:5rem;font-weight:300;line-height:1;
+  color:var(--cream-dark);margin-bottom:1.5rem;transition:color 0.3s;
+}
+.proj-card:hover .proj-no{color:var(--gold-pale);}
+.proj-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.7rem;font-weight:400;color:var(--navy);
+  margin-bottom:0.8rem;line-height:1.2;
+}
+.proj-sub{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;font-weight:400;}
+.proj-desc{font-size:0.875rem;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem;}
+.proj-tech{display:flex;flex-wrap:wrap;gap:0.45rem;margin-bottom:2rem;}
+.tech-pill{
+  font-family:'DM Mono',monospace;font-size:0.68rem;
+  padding:0.3rem 0.7rem;background:var(--cream);
+  border:1px solid var(--border-gold);color:var(--text-soft);letter-spacing:0.05em;
+}
+.proj-link{
+  display:inline-flex;align-items:center;gap:0.55rem;
+  font-size:0.73rem;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;font-weight:400;
+  transition:gap 0.3s;border-bottom:1px solid transparent;
+  padding-bottom:1px;
+}
+.proj-link:hover{gap:1rem;border-bottom-color:var(--gold);}
+.proj-link::after{content:'→';}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--navy);}
+#experience .sec-title{color:var(--cream);}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(201,168,76,0.1);}
+.exp-card{
+  background:var(--navy-mid);padding:3rem 2.5rem;
+  border-top:3px solid transparent;transition:border-color 0.3s;
+}
+.exp-card:hover{border-top-color:var(--gold);}
+.exp-period{
+  font-family:'DM Mono',monospace;font-size:0.68rem;
+  color:var(--gold);letter-spacing:0.15em;margin-bottom:0.8rem;
+}
+.exp-role{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.8rem;font-weight:400;color:var(--cream);
+  margin-bottom:0.3rem;line-height:1.15;
+}
+.exp-org{
+  font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;
+  color:rgba(250,248,243,0.35);margin-bottom:1.5rem;font-weight:300;
+}
+.exp-cert{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border:1px solid rgba(201,168,76,0.3);padding:0.4rem 0.9rem;
+  margin-bottom:1.5rem;transition:all 0.25s;
+}
+.exp-cert:hover{background:rgba(201,168,76,0.1);}
+.exp-pts{list-style:none;display:flex;flex-direction:column;gap:0.65rem;}
+.exp-pts li{
+  font-size:0.86rem;line-height:1.75;color:rgba(250,248,243,0.6);
+  font-weight:300;padding-left:1.3rem;position:relative;
+}
+.exp-pts li::before{content:'—';position:absolute;left:0;color:var(--gold);font-size:0.7rem;}
+
+/* ── RESEARCH ── */
+#research{background:var(--cream);}
+.research-list{display:flex;flex-direction:column;gap:2px;background:var(--border-gold);}
+.res-row{
+  background:var(--cream);padding:2.8rem;
+  display:grid;grid-template-columns:70px 1fr auto;gap:2rem;align-items:center;
+  transition:background 0.3s;
+}
+.res-row:hover{background:var(--white);}
+.res-idx{
+  font-family:'Cormorant Garamond',serif;
+  font-size:3rem;font-weight:300;color:var(--cream-mid);line-height:1;text-align:center;
+}
+.res-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.35rem;font-weight:400;color:var(--navy);margin-bottom:0.6rem;line-height:1.3;
+}
+.res-desc{font-size:0.84rem;color:var(--text-mid);line-height:1.7;font-weight:300;}
+.res-btn{
+  display:inline-block;
+  font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border:1px solid var(--border-gold);padding:0.65rem 1.3rem;
+  white-space:nowrap;font-weight:400;transition:all 0.25s;
+}
+.res-btn:hover{background:var(--navy);color:var(--gold-light);border-color:var(--navy);}
+
+/* ── EDUCATION ── */
+#education{background:var(--white);}
+.edu-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--cream-dark);}
+.edu-card{background:var(--white);padding:2.5rem 2rem;position:relative;}
+.edu-yr{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--gold);letter-spacing:0.15em;margin-bottom:1rem;}
+.edu-deg{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:400;color:var(--navy);margin-bottom:0.3rem;}
+.edu-inst{font-size:0.82rem;color:var(--text-soft);margin-bottom:1.2rem;font-weight:300;}
+.edu-score{
+  display:inline-block;font-family:'DM Mono',monospace;font-size:0.8rem;
+  padding:0.45rem 1rem;background:var(--cream);border-left:3px solid var(--gold);
+  color:var(--text-dark);font-weight:400;
+}
+
+/* ── CONTACT ── */
+#contact{background:var(--navy);padding:9rem 5%;text-align:center;}
+#contact .sec-title{color:var(--cream);margin-bottom:1.2rem;}
+.contact-sub{font-size:1rem;color:rgba(250,248,243,0.45);margin-bottom:4rem;font-weight:300;line-height:1.8;max-width:480px;margin-left:auto;margin-right:auto;}
+.contact-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-bottom:5rem;}
+.c-btn{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:0.9rem 2rem;border:1px solid rgba(201,168,76,0.25);
+  font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;
+  color:rgba(250,248,243,0.6);text-decoration:none;font-weight:300;
+  transition:all 0.3s;
+}
+.c-btn:hover{border-color:var(--gold);color:var(--gold);}
+.big-email{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.8rem,3vw,3rem);font-weight:300;
+  color:var(--gold);letter-spacing:-0.01em;text-decoration:none;
+  display:block;transition:opacity 0.3s;
+}
+.big-email:hover{opacity:0.75;}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy);border-top:1px solid rgba(201,168,76,0.15);
+  padding:1.8rem 5%;display:flex;align-items:center;justify-content:space-between;
+}
+.f-brand{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:400;color:rgba(250,248,243,0.3);letter-spacing:0.05em;}
+.f-copy{font-size:0.72rem;color:rgba(250,248,243,0.2);font-weight:300;}
+
+/* ── ANIMATE ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease;}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal:nth-child(2){transition-delay:0.1s;}
+.reveal:nth-child(3){transition-delay:0.2s;}
+.reveal:nth-child(4){transition-delay:0.3s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  #hero{grid-template-columns:1fr;}
+  .about-wrap{grid-template-columns:1fr;}
+  .proj-grid{grid-template-columns:1fr;}
+  .exp-grid{grid-template-columns:1fr;}
+  .edu-cards{grid-template-columns:1fr;}
+  .skills-master{grid-template-columns:1fr 1fr;}
+  .sk-group.hld-group{grid-column:auto;}
+}
+@media(max-width:640px){
+  nav{padding:1rem 4%;}
+  .nav-links{display:none;}
+  section{padding:5rem 4%;}
+  .stats-frame{grid-template-columns:1fr 1fr;}
+  .stat-box{padding:1.5rem 1rem;}
+  .res-row{grid-template-columns:1fr;}
+  .res-idx{display:none;}
+  footer{flex-direction:column;gap:0.8rem;text-align:center;}
+  .skills-master{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="topnav">
+  <a href="#" class="nav-logo">K<span>.</span>Kumar Datta</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">Software Developer &amp; Systems Architect</div>
+    <h1 class="hero-name">
+      Karnati
+      <span class="line2">Kumar Datta</span>
+      <span class="line3">Goud — Hyderabad, India</span>
+    </h1>
+    <div class="hero-roles">
+      <span class="role-chip">Full Stack</span>
+      <span class="role-chip hld">HLD · System Design</span>
+      <span class="role-chip">AI / ML</span>
+      <span class="role-chip">Deep Learning</span>
+      <span class="role-chip">Cybersecurity</span>
+    </div>
+    <p class="hero-desc">Building intelligent, scalable systems — from high-level architecture to production-ready code. I design systems that think, scale, and last.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-gold">View Work</a>
+      <a href="mailto:kumardatha9@gmail.com" class="btn-ghost">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="stats-frame">
+      <div class="stat-box">
+        <div class="stat-num">700+</div>
+        <div class="stat-lbl">DSA Problems</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">1850</div>
+        <div class="stat-lbl">LeetCode Peak</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">2</div>
+        <div class="stat-lbl">Publications</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">Top 1.5%</div>
+        <div class="stat-lbl">GRIET Epitome</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span class="scroll-line"></span>
+    Scroll to explore
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-hd reveal">
+    <div class="sec-tag">Who I Am</div>
+    <h2 class="sec-title">Engineer. Researcher. <em>Architect.</em></h2>
+  </div>
+  <div class="about-wrap">
+    <div class="about-card reveal">
+      <div class="monogram-block">
+        <span class="monogram">KD</span>
+      </div>
+      <div class="about-meta-list">
+        <div class="meta-row"><span class="mk">Location</span><span class="mv">Hyderabad, Telangana</span></div>
+        <div class="meta-row"><span class="mk">College</span><span class="mv">KMIT — B.Tech IT</span></div>
+        <div class="meta-row"><span class="mk">CGPA</span><span class="mv">7.89 / 10</span></div>
+        <div class="meta-row"><span class="mk">Graduating</span><span class="mv">June 2027</span></div>
+        <div class="meta-row"><span class="mk">Phone</span><span class="mv"><a href="tel:8332025793">+91 8332025793</a></span></div>
+        <div class="meta-row"><span class="mk">GitHub</span><span class="mv"><a href="https://github.com/kumar-datta" target="_blank">kumar-datta</a></span></div>
+        <div class="meta-row"><span class="mk">LinkedIn</span><span class="mv"><a href="https://www.linkedin.com/in/kumar-datta-goud-karnati-5012a4339/" target="_blank">kumar-datta-goud</a></span></div>
+        <div class="meta-row"><span class="mk">LeetCode</span><span class="mv"><a href="https://leetcode.com/u/NANDUGOUD123/" target="_blank">View Profile</a></span></div>
+      </div>
+    </div>
+
+    <div class="about-text reveal">
+      <p class="about-quote">"I don't just write code — I design systems that scale, and engineer solutions that create real-world impact."</p>
+      <p class="about-p">I'm a final-year Information Technology student at Keshav Memorial Institute of Technology, deeply passionate about building intelligent and scalable systems. My work spans full-stack development, deep learning, and cybersecurity research — with a strong emphasis on <strong>High-Level Design (HLD), system architecture, and scalability</strong>.</p>
+      <p class="about-p">I've interned at IIIT Hyderabad's iHub Data and Cyber Guard 360, delivering production-grade AI solutions. From crop yield prediction to drug discovery to network threat detection — I engineer with purpose and precision.</p>
+
+      <!-- HLD HIGHLIGHT -->
+      <div class="hld-block">
+        <div class="hld-title">◆ System Design & Architecture Expertise</div>
+        <div class="hld-items">
+          <span class="hld-item">High-Level Design (HLD)</span>
+          <span class="hld-item">Scalability Patterns</span>
+          <span class="hld-item">Caching Strategies</span>
+          <span class="hld-item">Load Balancing</span>
+          <span class="hld-item">Microservices</span>
+          <span class="hld-item">SOLID Principles</span>
+          <span class="hld-item">Object-Oriented Design</span>
+          <span class="hld-item">Distributed Systems</span>
+        </div>
+      </div>
+
+      <div class="achv-strip">
+        <div class="achv-cell">
+          <h4>Competition</h4>
+          <p>2nd Runner-Up — GRIET EPITOME 2025. Ranked top 1.5% among 800 participants (outperformed 98.5%).</p>
+        </div>
+        <div class="achv-cell">
+          <h4>Certification</h4>
+          <p>AI/ML Course — IIIT Hyderabad. Hands-on training in machine learning and model deployment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-hd reveal">
+    <div class="sec-tag">Technical Arsenal</div>
+    <h2 class="sec-title">Skills & <em>Expertise</em></h2>
+  </div>
+
+  <!-- HLD HIGHLIGHTED GROUP AT TOP -->
+  <div class="skills-master">
+    <div class="sk-group hld-group reveal">
+      <div class="sk-title">⬡ High-Level Design & Systems Architecture — Core Strength</div>
+      <div class="hld-skills-grid">
+        <div class="hld-skill-card">
+          <div class="hld-sk-icon">HLD</div>
+          <div class="hld-sk-name">High-Level Design</div>
+          <div class="hld-sk-sub">Architecture</div>
+        </div>
+        <div class="hld-skill-card">
+          <div class="hld-sk-icon">⚡</div>
+          <div class="hld-sk-name">Scalability</div>
+          <div class="hld-sk-sub">Patterns & Strategy</div>
+        </div>
+        <div class="hld-skill-card">
+          <div class="hld-sk-icon">⟳</div>
+          <div class="hld-sk-name">Caching</div>
+          <div class="hld-sk-sub">Redis, CDN, Layers</div>
+        </div>
+        <div class="hld-skill-card">
+          <div class="hld-sk-icon">⊕</div>
+          <div class="hld-sk-name">SOLID Principles</div>
+          <div class="hld-sk-sub">OOP Design</div>
+        </div>
+        <div class="hld-skill-card">
+          <div class="hld-sk-icon">◎</div>
+          <div class="hld-sk-name">OS & Networks</div>
+          <div class="hld-sk-sub">Core CS</div>
+        </div>
+        <div class="hld-skill-card">
+          <div class="hld-sk-icon">▲</div>
+          <div class="hld-sk-name">System Design</div>
+          <div class="hld-sk-sub">End-to-End</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sk-group reveal">
+      <div class="sk-title">Languages</div>
+      <div class="tags">
+        <span class="tag star">C++</span>
+        <span class="tag star">Java</span>
+        <span class="tag star">Python</span>
+        <span class="tag star">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="sk-group reveal">
+      <div class="sk-title">Frameworks & Tools</div>
+      <div class="tags">
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">TensorFlow</span>
+        <span class="tag">Keras</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Git</span>
+        <span class="tag">Firebase</span>
+      </div>
+    </div>
+
+    <div class="sk-group reveal">
+      <div class="sk-title">Databases & Cloud</div>
+      <div class="tags">
+        <span class="tag">MongoDB</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Firebase Firestore</span>
+        <span class="tag">AWS EC2</span>
+        <span class="tag">AWS S3</span>
+      </div>
+    </div>
+
+    <div class="sk-group reveal">
+      <div class="sk-title">AI / ML</div>
+      <div class="tags">
+        <span class="tag star">Machine Learning</span>
+        <span class="tag star">Deep Learning</span>
+        <span class="tag">YOLOv8</span>
+        <span class="tag">Transformers</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Model Deployment</span>
+      </div>
+    </div>
+
+    <div class="sk-group reveal">
+      <div class="sk-title">Problem Solving</div>
+      <div class="lc-card" style="margin-top:0;padding:1.5rem;">
+        <div class="lc-big">700+</div>
+        <div class="lc-sep"></div>
+        <div class="lc-info">
+          <h3 style="color:rgba(250,248,243,0.85);">LeetCode Problems</h3>
+          <p>Peak Rating: <strong style="color:var(--gold);">1850</strong><br>Consistent competitive programmer</p>
+          <a href="https://leetcode.com/u/NANDUGOUD123/" target="_blank">View Profile →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-hd reveal">
+    <div class="sec-tag">Selected Work</div>
+    <h2 class="sec-title">Projects that <em>Matter</em></h2>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card reveal">
+      <div class="proj-no">01</div>
+      <h3 class="proj-title">AgriTrade AI</h3>
+      <div class="proj-sub">AI-Powered Precision Farming & Crop Trading Platform</div>
+      <p class="proj-desc">An intelligent precision farming platform for crop growth optimization, yield prediction, and soil-based recommendations. Built a direct Farmer–Merchant marketplace designed to impact nearly 60% of India's farming population — small and medium-scale farmers — through accessible, data-driven tools.</p>
+      <div class="proj-tech">
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">TensorFlow</span>
+        <span class="tech-pill">React</span>
+        <span class="tech-pill">Node.js</span>
+        <span class="tech-pill">Firebase</span>
+        <span class="tech-pill">ML Models</span>
+      </div>
+      <a href="https://github.com/kumar-datta/farm-friend-web" target="_blank" class="proj-link">View Project</a>
+    </div>
+
+    <div class="proj-card reveal">
+      <div class="proj-no">02</div>
+      <h3 class="proj-title">AI-Driven Drug Discovery</h3>
+      <div class="proj-sub">ChemBERT — Alzheimer's Drug Research</div>
+      <p class="proj-desc">Transformer-based model generating and predicting novel drug molecules (SMILES) targeting Alzheimer's disease. Integrated LLM-powered disease diagnosis, 3D molecular visualization via PyMOL, and a full React interface for comprehensive drug analysis and prediction workflows.</p>
+      <div class="proj-tech">
+        <span class="tech-pill">Python</span>
+        <span class="tech-pill">Transformers</span>
+        <span class="tech-pill">RDKit</span>
+        <span class="tech-pill">PyMOL</span>
+        <span class="tech-pill">React</span>
+        <span class="tech-pill">AlphaFold</span>
+      </div>
+      <a href="https://drive.google.com/file/d/1AjQn1GwU_wXHdju_da92G3F9_-a8rITi/view" target="_blank" class="proj-link">View Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-hd reveal">
+    <div class="sec-tag">Work History</div>
+    <h2 class="sec-title sec-title-light">Professional <em>Experience</em></h2>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card reveal">
+      <div class="exp-period">Oct 2025 — Dec 2025</div>
+      <h3 class="exp-role">Machine Learning Intern</h3>
+      <div class="exp-org">IIIT Hyderabad / iHub Data · Vision Systems</div>
+      <a href="https://drive.google.com/file/d/1Os00QJX7sBIQVv0NJ8eYllX5fgr3WOpB/view" target="_blank" class="exp-cert">Certificate ↗</a>
+      <ul class="exp-pts">
+        <li>Built a real-time computer vision system for liquid-level monitoring and overflow detection — 85% accuracy, 500 ms inference latency.</li>
+        <li>Trained YOLOv8 on 6,000 annotated images to classify liquid states: low, high, overflow.</li>
+        <li>Implemented real-time inference pipelines with automated overflow alert triggering.</li>
+        <li>Fine-tuned the model to reduce misclassification during subtle liquid-level transitions.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-period">Jan 2025 — Jul 2025</div>
+      <h3 class="exp-role">Research Intern — Cybersecurity</h3>
+      <div class="exp-org">Cyber Guard 360 · Network Monitoring</div>
+      <a href="https://drive.google.com/file/d/18y5BxLWtE8tFtHmUxV3P2xD1iUEcmgMD/view" target="_blank" class="exp-cert">Certificate ↗</a>
+      <ul class="exp-pts">
+        <li>Designed a real-time network traffic monitoring tool inspired by Wireshark for packet inspection and protocol-level analysis.</li>
+        <li>Applied Deep Packet Inspection (DPI) to detect malicious packets, anomalies, and suspicious traffic patterns.</li>
+        <li>Built packet filtering and threat detection algorithms improving monitoring accuracy and response time.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="sec-hd reveal">
+    <div class="sec-tag">Publications</div>
+    <h2 class="sec-title">Research & <em>Papers</em></h2>
+  </div>
+  <div class="research-list">
+    <div class="res-row reveal">
+      <div class="res-idx">01</div>
+      <div>
+        <h3 class="res-title">Advanced Network Monitor — Integrated Security Framework using DPI</h3>
+        <p class="res-desc">Real-time network traffic monitoring with Deep Packet Inspection for protocol-level analysis, anomaly detection, and malicious packet classification. Demonstrated measurable improvements in threat detection accuracy and response performance.</p>
+      </div>
+      <a href="https://www.techrxiv.org/doi/full/10.36227/techrxiv.175339410.03360884/v1?commit=e942a73d3d4d06dc62653b4e786f811305b637b0" target="_blank" class="res-btn">View Paper ↗</a>
+    </div>
+    <div class="res-row reveal">
+      <div class="res-idx">02</div>
+      <div>
+        <h3 class="res-title">Paddy Field Segmentation using Google Earth Engine</h3>
+        <p class="res-desc">Paddy field segmentation using Sentinel-2 imagery with NDVI and LSWI indices. U-Net model trained on 2,000 labeled images achieving 91% accuracy, deployed via mobile application for scalable agricultural monitoring.</p>
+      </div>
+      <a href="https://www.cabidigitallibrary.org/doi/10.31220/agriRxiv.2025.00346" target="_blank" class="res-btn">View Paper ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-hd reveal">
+    <div class="sec-tag">Academic Background</div>
+    <h2 class="sec-title">Education & <em>Qualifications</em></h2>
+  </div>
+  <div class="edu-cards">
+    <div class="edu-card reveal">
+      <div class="edu-yr">Expected June 2027</div>
+      <h3 class="edu-deg">B.Tech in Information Technology</h3>
+      <p class="edu-inst">Keshav Memorial Institute of Technology</p>
+      <span class="edu-score">CGPA: 7.89 / 10</span>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-yr">June 2023</div>
+      <h3 class="edu-deg">Intermediate — MPC Stream</h3>
+      <p class="edu-inst">Government Junior College, Kalwakurthy · Telangana State Board</p>
+      <span class="edu-score">95.3%</span>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-yr">June 2021</div>
+      <h3 class="edu-deg">SSC — Secondary School Certificate</h3>
+      <p class="edu-inst">SPR School of Excellence · SSC Board</p>
+      <span class="edu-score">98%</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-hd reveal" style="margin-bottom:1.5rem;">
+    <div class="sec-tag" style="justify-content:center;">Get in Touch</div>
+    <h2 class="sec-title sec-title-light">Let's Build Something <em>Together</em></h2>
+  </div>
+  <p class="contact-sub reveal">Open to internships, research collaborations, and full-time roles.<br>I design systems that scale — let's create something that lasts.</p>
+  <div class="contact-btns reveal">
+    <a href="https://github.com/kumar-datta" target="_blank" class="c-btn">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/kumar-datta-goud-karnati-5012a4339/" target="_blank" class="c-btn">LinkedIn ↗</a>
+    <a href="https://leetcode.com/u/NANDUGOUD123/" target="_blank" class="c-btn">LeetCode ↗</a>
+    <a href="tel:8332025793" class="c-btn">+91 8332025793</a>
+  </div>
+  <a href="mailto:kumardatha9@gmail.com" class="big-email reveal">kumardatha9@gmail.com</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-brand">Karnati Kumar Datta Goud</span>
+  <span class="f-copy">© 2025 · Designed with precision</span>
+</footer>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Nav shadow on scroll
+const nav = document.getElementById('topnav');
+window.addEventListener('scroll', () => {
+  nav.style.boxShadow = scrollY > 60 ? '0 2px 32px rgba(10,22,40,0.13)' : 'none';
+});
+</script>
+</body>
+</html>
